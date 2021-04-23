@@ -1,0 +1,15 @@
+name: 'github-action-devops-cloudformation-deployer'
+description: 'Step to deploy cloudformation with GithubActions'
+runs:
+  using: "docker"
+  image: "Dockerfile"
+inputs:
+  awsaccount-access-key:
+    description: 'Access Key User'
+    required: true
+  awsaccount-secret-key:
+    description: 'Secret Key Password'
+    required: true
+  cfnparams:
+    description: 'Parameters to Cloudformation Deployer'
+    required: true
