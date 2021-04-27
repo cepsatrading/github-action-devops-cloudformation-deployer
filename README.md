@@ -46,14 +46,15 @@ jobs:
 ```
 In cfnparams, we can enter the following values:
 * positional arguments:
-  folder -> list of template folders in order that contain the Cloudformation and params files to deploy
+
+  -  folder -> list of template folders in order that contain the Cloudformation and params files to deploy
 
 * optional arguments:
-  -h, --help         show this help message and exit
-  --ask              this flag will ask for confirmation on every deploy
-  --ignore-role-arn  this flag will unset the rolearn param of the deployments, so CF will inherit the current user IAM role to perform the deployment, this should be used for admin/platform deployments only
-  --region           use with value us-east-1 if you need to deploy infra in North Virginia
-  --jenkins_inputs   use this list to include input parameters using Jenkins. Example: --jenkins_inputs param1=param1value ... param2=param2value
+  -  -h, --help         show this help message and exit
+  -  --ask              this flag will ask for confirmation on every deploy
+  -  --ignore-role-arn  this flag will unset the rolearn param of the deployments, so CF will inherit the current user IAM role to perform the deployment, this should be used for admin/platform deployments only
+  -  --region           use with value us-east-1 if you need to deploy infra in North Virginia
+  -  --jenkins_inputs   use this list to include input parameters using Jenkins. Example: --jenkins_inputs param1=param1value ... param2=param2value
 
 ## Secrets
 
