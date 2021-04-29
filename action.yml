@@ -29,7 +29,6 @@ runs:
       sudo ln -s cloudformation-deployer/cloudformation_deploy.py /home/${USER}/.local/bin/cloudformation-deployer
       sudo ln -s /home/${USER}/cloudformation-deployer/cloudformation_deploy.py /usr/bin/cloudformation-deployer
 
-      cd ~/cloudformation-deployer
-      python3 -m pip install --user -r requirements.txt
+      python3 -m pip install --user -r ~/cloudformation-deployer/requirements.txt
       cloudformation-deployer ${{ inputs.cfnparams }}
     shell: bash
