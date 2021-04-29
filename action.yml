@@ -12,10 +12,11 @@ runs:
   steps:     
   - id: install-cloudformation-deployer-and-deploy-iac
     run: | 
+      # Clone and deploy cloudformation-deployer library
       git clone https://${{ inputs.githubtoken }}:x-oauth-basic@github.com/cepsadigital/cloudformation-deployer.git ~/cloudformation-deployer
       mkdir -p /home/${USER}/.local/bin/
-      #sudo ln -s cloudformation-deployer/cloudformation_deploy.py /home/${USER}/.local/bin/cloudformation-deployer
       sudo ln -s /home/${USER}/cloudformation-deployer/cloudformation_deploy.py /usr/bin/cloudformation-deployer
       python3 -m pip install --user -r ~/cloudformation-deployer/requirements.txt
+      # Deploy iac
       cloudformation-deployer ${{ inputs.cfnparams }}
     shell: bash
