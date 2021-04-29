@@ -21,8 +21,9 @@ runs:
   steps:     
   - id: install-cloudformation-deployer-and-deploy-iac
     run: | 
-    
       git clone https://${{ inputs.githubtoken }}:x-oauth-basic@github.com/cepsadigital/cloudformation-deployer.git ~/cloudformation-deployer
+      ls
+      echo $USER
       mkdir -p /home/${USER}/.local/bin/
       # Checkear el funcionamiento de esta línea.
       sudo ln -s cloudformation-deployer/cloudformation_deploy.py /home/${USER}/.local/bin/cloudformation-deployer
