@@ -27,6 +27,8 @@ runs:
       mkdir -p /home/${USER}/.local/bin/
       # Checkear el funcionamiento de esta línea.
       sudo ln -s cloudformation-deployer/cloudformation_deploy.py /home/${USER}/.local/bin/cloudformation-deployer
+      sudo ln -s /home/${USER}/cloudformation-deployer/cloudformation_deploy.py /usr/bin/cloudformation-deployer
+
       cd ~/cloudformation-deployer
       python3 -m pip install --user -r requirements.txt
       cloudformation-deployer ${{ inputs.cfnparams }}
