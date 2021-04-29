@@ -16,7 +16,7 @@ inputs:
 runs:
   using: "composite"
   steps:     
-  - id: install cloudformation-deployer and deploy iac
+  - id: install cloudformation deployer and deploy iac
     run: |  
       git clone https://servidor0008.cepsacorp.com/devops-tools/cloudformation-deployer.git ~/cloudformation-deployer
       mkdir -p /home/${USER}/.local/bin/
