@@ -1,0 +1,5 @@
+boto3==1.9.127
+texttable==1.6.1
+PyYAML>=3.13
+GitPython==2.1.11
+gitdb2==2.0.6

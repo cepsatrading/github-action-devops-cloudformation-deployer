@@ -1,0 +1,27 @@
+name: 'github-action-devops-cloudformation-deployer'
+description: 'Step to deploy cloudformation with GithubActions'
+#runs:
+#  using: "docker"
+#  image: "Dockerfile"
+inputs:
+  awsaccount-access-key:
+    description: 'Access Key User'
+    required: true
+  awsaccount-secret-key:
+    description: 'Secret Key Password'
+    required: true
+  cfnparams:
+    description: 'Parameters to Cloudformation Deployer'
+    required: true
+runs:
+  using: "composite"
+  steps:     
+  - id: install cloudformation-deployer and deploy iac
+    run: |  
+      git clone https://servidor0008.cepsacorp.com/devops-tools/cloudformation-deployer.git ~/cloudformation-deployer
+      mkdir -p /home/${USER}/.local/bin/
+      # Checkear el funcionamiento de esta línea.
+      sudo ln -s cloudformation-deployer/cloudformation_deploy.py /home/${USER}/.local/bin/cloudformation-deployer
+      python3 -m pip install --user -r requirements.txt
+      cloudformation-deployer $cfnparams
+    shell: bash
