@@ -17,11 +17,13 @@ The `github-action-devops-cloudformation-deployer` Github Action will install cl
 ## Usage
 
 ```yaml
+name: Deploy cloudformation with library cloudformation-deployer
+
 on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Enter environment for deployment. Default is dev'
+        description: 'Enter environment for deployment: dev or pro'
         required: true
         default: 'dev'
 
@@ -29,12 +31,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Credentials to DEV Environment
+        if: ${{ github.event.inputs.environment=='dev' }}
+        run: | 
+           echo "AKID=${{ secrets.TR_GITHUB_DEV_AK }}" >> $GITHUB_ENV
+           echo "SKID=${{ secrets.TR_GITHUB_DEV_SK }}">> $GITHUB_ENV
+      - name: Credentials to PRO Environment
+        if: ${{ github.event.inputs.environment=='pro' }}
+        run: | 
+           echo "AKID=${{ secrets.TR_GITHUB_PRO_AK }}" >> $GITHUB_ENV
+           echo "SKID=${{ secrets.TR_GITHUB_PRO_SK }}">> $GITHUB_ENV
       - uses: actions/checkout@v2    
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with: 
-          aws-access-key-id: ${{ secrets.TRADING_DEV_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.TRADING_DEV_SECRET_KEY }}
+          aws-access-key-id: ${{ env.AKID }}
+          aws-secret-access-key: ${{ env.SKID }}
           aws-region: eu-west-1
       - name: get aws caller indentity
         run:  aws sts get-caller-identity
@@ -42,7 +54,8 @@ jobs:
       - name: Build and Install Cloudformation-deployer library to deploy cloudformation in aws
         uses: cepsatrading/github-action-devops-cloudformation-deployer@master
         with:
-          cfnparams: folder optional_arguments
+          githubtoken: ${{ secrets.TR_GITHUB_TOKEN }}
+          cfnparams: folder optional_arguments 
 ```
 In cfnparams, we can enter the following values:
 * positional arguments:
