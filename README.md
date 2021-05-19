@@ -71,8 +71,10 @@ In cfnparams, we can enter the following values:
 
 ## Secrets
 
-- `TRADING_DEV_ACCESS_KEY` - **_(Required)_** this is the Access Key of the github user to deploy iac in AWS.
-- `TRADING_DEV_SECRET_KEY` - **_(Required)_** this is the Secret Key of the github user to deploy iac in AWS
+- `TRADING_DEV_ACCESS_KEY` - **_(Required)_** this is the DEV Access Key of the github user to deploy iac in AWS.
+- `TRADING_DEV_SECRET_KEY` - **_(Required)_** this is the DEV Secret Key of the github user to deploy iac in AWS.
+- `TRADING_PRO_ACCESS_KEY` - **_(Required)_** this is the PRO Access Key of the github user to deploy iac in AWS.
+- `TRADING_PRO_SECRET_KEY` - **_(Required)_** this is the PRO Secret Key of the github user to deploy iac in AWS.
 
 ## Contact
 
